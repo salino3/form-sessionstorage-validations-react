@@ -1,5 +1,6 @@
 import React from 'react';
 import { GlobalData, MyState, Post } from '../core';
+import { useNavigate } from 'react-router-dom';
 import './componentsStyles.scss'
 
 
@@ -8,7 +9,13 @@ export const Form: React.FC = () => {
   const { state, createPost } = React.useContext<MyState>(GlobalData);
   const {posts} = state;
 
-  let Id: number = posts.length;
+  const [pageLoaded, setPageLoaded] = React.useState(false);
+
+  const navigate = useNavigate();
+
+  // let Id: number | undefined = sessionStorage.getItem("posts")?.length || 0;
+    let Id: number | undefined = state?.posts.length || 0;
+
   ++Id
 
   const [newPost, setNewPost] = React.useState<Post>({
@@ -35,11 +42,19 @@ export const Form: React.FC = () => {
 
     console.log(newPost);
     createPost(newPost);
+    setPageLoaded(true);
+
   };
 
-  React.useEffect(() => {
+  
+  React.useLayoutEffect(() => {
     sessionStorage.setItem("posts", JSON.stringify(state.posts));
+    if (pageLoaded) {
+      navigate("/list");
+    };
   }, [state.posts]);
+
+  console.log(pageLoaded)
 
 
   console.log("lenght", posts);
@@ -76,7 +91,18 @@ export const Form: React.FC = () => {
       <label htmlFor="image">
         <b>Image: </b>
       </label>
-      <input type="file" onChange={handleChange("image")} id="image" required />{" "}
+      <textarea
+        name="image"
+        id="image"
+        onChange={handleChange("image")}
+        placeholder='Your Image..'
+        required
+      ></textarea>
+      {/* <input 
+      type="file" 
+      onChange={handleChange("image")}
+       id="image" 
+       required />{" "} */}
       <br />
       <label htmlFor="years">
         <b>Age: </b>

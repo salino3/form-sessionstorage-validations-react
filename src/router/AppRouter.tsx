@@ -1,7 +1,7 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
-import { list, root } from '.';
 import { Home, List  } from '../pages';
+import { list, root } from '.';
 
 export const AppRouter: React.FC = () => {
 

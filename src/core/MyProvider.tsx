@@ -23,7 +23,6 @@ export const MyProvider: React.FC<Props> = ({ children }) => {
 
   React.useEffect(() => {
     getData();
-    console.log("!!!")
   }, []);
 
   const createPost = React.useCallback((post: Post) => {

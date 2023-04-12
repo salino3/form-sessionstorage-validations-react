@@ -18,7 +18,7 @@ export interface Post {
      name: string,
      email: string,
      date: string;
-     image: File | null;
+     image: string | File | null;
      years: number | null;
      terms: boolean;
 }
