@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
+    "react": "^17.0.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "sass": "^1.61.0"

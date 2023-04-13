@@ -13,7 +13,6 @@ export const Form: React.FC = () => {
 
   const navigate = useNavigate();
 
-  // let Id: number | undefined = sessionStorage.getItem("posts")?.length || 0;
     let Id: number | undefined = state?.posts.length || 0;
 
   ++Id
@@ -58,10 +57,11 @@ export const Form: React.FC = () => {
 
 
   console.log("lenght", posts);
+  
   return (
     <form id="myForm" onSubmit={handleSubmit}>
-      <h1>Create Post</h1>
-      <label htmlFor="name">
+      <h1 className="text-center m-2">Create Post</h1>
+      <label className="text-center" htmlFor="name">
         <b>Name: </b>
       </label>
       <input
@@ -71,8 +71,7 @@ export const Form: React.FC = () => {
         placeholder="Name.."
         required
       />{" "}
-      <br />
-      <label htmlFor="email">
+      <label className="text-center" htmlFor="email">
         <b>Email: </b>
       </label>
       <input
@@ -82,20 +81,18 @@ export const Form: React.FC = () => {
         placeholder="Email.."
         required
       />{" "}
-      <br />
-      <label htmlFor="date">
+      <label className="text-center" htmlFor="date">
         <b>Date: </b>
       </label>
       <input type="date" onChange={handleChange("date")} id="date" required />{" "}
-      <br />
-      <label htmlFor="image">
+      <label className="text-center" htmlFor="image">
         <b>Image: </b>
       </label>
       <textarea
         name="image"
         id="image"
         onChange={handleChange("image")}
-        placeholder='Your Image..'
+        placeholder="Your Image.."
         required
       ></textarea>
       {/* <input 
@@ -103,8 +100,7 @@ export const Form: React.FC = () => {
       onChange={handleChange("image")}
        id="image" 
        required />{" "} */}
-      <br />
-      <label htmlFor="years">
+      <label className="text-center" htmlFor="years">
         <b>Age: </b>
       </label>
       <input
@@ -114,19 +110,21 @@ export const Form: React.FC = () => {
         placeholder="Age.."
         required
       />{" "}
+      <div>
+        <label className="mx-2" htmlFor="terms">
+          <b>Terms and Conditions </b>
+        </label>{" "}
+        <input
+          type="checkbox"
+          id="terms"
+          required
+          onChange={handleChange("terms")}
+        />{" "}
+      </div>
       <br />
-      <label htmlFor="terms">
-        <b>Terms and Conditions </b>
-      </label>{" "}
-      <br />
-      <input
-        type="checkbox"
-        id="terms"
-        required
-        onChange={handleChange("terms")}
-      />{" "}
-      <br />
-      <button type="submit">Submit</button>
+      <button className="btn btn-sm btn-warning text-white" type="submit">
+        <b>Submit</b>
+      </button>
     </form>
   );
 }

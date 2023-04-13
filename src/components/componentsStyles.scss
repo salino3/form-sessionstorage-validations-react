@@ -4,6 +4,14 @@
 #myForm {
      color: $orange1;
    
+     display: grid;
+     padding-bottom: 5em;
+
+    textarea, input {
+          margin-bottom: 1em;
+     }
+
+
      #image {
           width: 20em;
           height: 10em;
